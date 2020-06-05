@@ -11,11 +11,11 @@ const myReducer =(state = initialSate, action)=>{
         newState.age += 1
     }
     if (action.type === 'SUB') {
-        newState.age -= 1
+        newState.age -= action.val
     }
 
     if (action.type === 'TIMES') {
-        newState.age *= 5
+        newState.age *= action.val
     }
 
     return newState
@@ -27,5 +27,5 @@ store.subscribe(()=>{
     console.log("state changed!" + JSON.stringify(store.getState()))
 })
 
-store.dispatch({type: 'SUB'});
-store.dispatch({ type: 'TIMES' });
+store.dispatch({type: 'SUB', val: 5});
+store.dispatch({ type: 'TIMES', val: 10 });
